@@ -204,5 +204,38 @@ class view():
         self.model.draw(self.screen);
         
 """  """  """  """  """  """  """  """  """  """  """  """  """  """  """
-                                Controller
+                                Keybord Controller
 """  """  """  """  """  """  """  """  """  """  """  """  """  """  """
+
+class keyboardController:
+    def __init__(self):
+        self.model = model
+    def handle_keyboard_event(self,event):
+        if event.type != KEYDOWN:
+            return
+        if event.key == K_UP:
+            self.model.fireRocket(0)
+        if event.key == K_RIGHT:
+            self.model.fireRocket(1)
+        if event.key == K_DOWN:
+            self.model.fireRocket(2)
+        if event.key == K_LEFT:
+            self.model.fireRocket(3)
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
