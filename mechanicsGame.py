@@ -118,6 +118,10 @@ class thrusterSet():
     def translate(self, deltaPosition):
         for thruster in self.thrusterList:
             thruster.translate(deltaPosition);
+    
+    def draw(self,screen):
+        for thruster in self.thrusterList:
+            thruster.draw(screen);
 
 """--------------------------------Rocket----------------------------------"""
         
@@ -159,6 +163,10 @@ class rocket():
         deltaPos = self.deltaPosition(force, time);
         self.translate(deltaPos);
 
+    def draw(self, screen):
+        self.body.draw(screen);
+        self.thrusters.draw(screen);
+        
 class model():
     def __init__(rbMass, rbRadius, position, tmass, tradius):
         self.planentsList = []
@@ -179,11 +187,22 @@ class model():
     def objectsInWorld(self):
         return [self.myRocket, self.planentsList];
     
+    def draw(self,screen):
+        for planet in self.planetList:
+            planet.draw(screen);
+        self.myRocket.draw(screen);
+    
             
 """  """  """  """  """  """  """  """  """  """  """  """  """  """  """
                                 View
 """  """  """  """  """  """  """  """  """  """  """  """  """  """  """
-
+class view():
+    def __init__(self,model,screen):
+        self.model = model
+        self.screen = screen
+    def draweverything(self):
+        self.model.draw(self.screen);
+        
 """  """  """  """  """  """  """  """  """  """  """  """  """  """  """
                                 Controller
 """  """  """  """  """  """  """  """  """  """  """  """  """  """  """
